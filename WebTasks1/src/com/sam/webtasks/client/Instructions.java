@@ -43,6 +43,22 @@ public class Instructions {
 					+ "earn an extra bonus payment that will be sent to you after the experiment via Prolific.<br><br>"
 					+ "<br><br>Please click below to practise again";
 			break;
+		case 31:
+			i = "Now that you have had some practice, we would like you to tell us how accurately you "
+					+ "think you can perform the timer task. We will ask you to make seprate predictions for "
+					+ "how well you can perform the task when you have to wait A) 10 seconds and "
+					+ "B) 30 seconds until it is time to press the special key.<br><br> "
+					+ "First of all, please use the scale below to indicate what percentage "
+					+ "of times you will remember to correctly press the special key when there is a <b>10 second wait</b>."
+					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
+					+ "that you can never get any of them correct.";
+			break;
+		case 32:
+			i = "Now, please use the scale below to indicate what percentage "
+					+ "of times you will remember to correctly press the special key when there is a <b>30 second wait</b>."
+					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
+					+ "that you can never get any of them correct.";
+			break;
 		case 40:
 			i = "From now on, you can decide whether to take the timer task when it is presented. "
 					+ "As before, you will earn extra points and money if you remember to press the special key. "
@@ -93,42 +109,57 @@ public class Instructions {
 	}
 	
 	public static String InfoText() {
+		String expDur = "60";
+		String eligibility = "All registered users of Prolific ";
+		String nVolunteers = "50";
+		
 		return ("We would like to invite you to participate in this research project. "
-                + "You should only participate if you want to; choosing not to take part "
-                + "will not disadvantage you in any way. Before you decide whether you "
-                + "want to take part, please read the following information carefully and "
-                + "discuss it with others if you wish. Ask us if there is anything that "
-                + "is not clear or you would like more information.<br><br>"
-                + "We are recruiting volunteers to "
-                + "take part in an experiment aiming to improve our understanding of human "
-                + "attention and memory. You will see various stimuli on the screen like letters of the alphabet "
-                + "and you will be asked to respond to them by pressing keys. Sometimes you will be asked how "
-                + "confident you are in your ability to perform the task. "
-                + "The experiment "
-                + "will last approximately 1 hour and you will receive a payment of £7.50 via the "
-                + "Prolific Academic payment system. There are no anticipated risks or "
-                + "benefits associated with participation in this study.<br><br>"
-                + "It is up to you to decide whether or not to take part. If you choose "
-                + "not to participate, you won't incur any penalties or lose any "
-                + "benefits to which you might have been entitled. However, if you do "
-                + "decide to take part, you can print out this information sheet and "
-                + "you will be asked to fill out a consent form on the next page. "
-                + "Even after agreeing to take "
-                + "part, you can still withdraw at any time and without giving a reason. If you withdraw before the "
-                + "end of the experiment, we will not retain your data and it will not be analysed."
-                + "<br><br>All data will be collected and stored in accordance with the General Data Protection "
-                + "Regulations 2018. Personal information is stored separately from test results, and researchers "
-                + "on this project have no access to this data. Your personal information such as name and email "
-                + "address is held by Prolific Academic but the researchers on this project have no acccess "
-                + "to this. Data from this experiment may be made available to the research community, for example by "
-                + "posting them on websites such as the Open Science Framework (<a href=\"http://osf.io\">http://osf.io</a>). "
-                + "It will not be possible to identify you from these data.<br><br>"
-                + "We aim to publish the results of this project in scientific journals and book chapters. Copies of the "
-                + "results can either be obtained directly from the scientific journals' websites or from us.<br><br>"
-                + "Should you wish to raise a complaint, please contact the Principal Investigator of this project, "
-                + "Professor Sam Gilbert (<a href=\"mailto:sam.gilbert@ucl.ac.uk\">sam.gilbert@ucl.ac.uk</a>). However, "
-                + "if you feel your complaint has not been handled to your satisfaction, please be aware that you can "
-                + "also contact the Chair of the UCL Research Ethics Committee (<a href=\"mailto:ethics@ucl.ac.uk\">ethics@ucl.ac.uk</a>).");
+				+ "You should only participate if you want to; choosing not to take part "
+				+ "will not disadvantage you in any way. Before you decide whether you "
+				+ "want to take part, please read the following information carefully and "
+				+ "discuss it with others if you wish. Ask us if there is anything that "
+				+ "is not clear or you would like more information.<br><br>"
+				+ "We are recruiting approximately " + nVolunteers + " volunteers to "
+				+ "take part in an experiment aiming to improve our understanding of human "
+				+ "attention and memory. " + eligibility + "are eligible "
+				+ "to take part. "
+				+ "The experiment will last approximately " + expDur + " minutes. During this experiment you "
+				+ "will see various shapes on the screen and you will use your mouse or touchscreen "
+				+ "to drag them from one location to another. Full instructions will be provided. "
+				+ "There are no anticipated risks or "
+				+ "benefits associated with participation in this study.<br><br>"
+				+ "It is up to you to decide whether or not to take part. If you choose "
+				+ "not to participate, you won't incur any penalties or lose any "
+				+ "benefits to which you might have been entitled. If you do "
+				+ "decide to take part, you can print out this information sheet and "
+				+ "you will be asked to fill out a consent form on the next page. " + "Even after agreeing to take "
+				+ "part, you can still withdraw at any time and without giving a reason. This will not affect "
+				+ "any benefits that you are entitled to. "
+				+ "<br><br>All the information that we collect about you during the course of the research will be "
+				+ "kept strictly confidential. The personal information that we will collect is your Prolific ID code. This "
+				+ "allows us to link you to your data so that we can process any applicable bonus payments. You will not "
+				+ "be able to be identified in any ensuing reports "
+				+ "or publications. The results of this research may be published in scientific journals. You can "
+				+ "contact the investigator to receive a copy of any published results.<br><br>"
+				+ "The data controller for this project will be University College London (UCL). The "
+				+ "UCL Data Protection Office provices oversight of UCL activities involving the processing "
+				+ "of personal data, and can be contacted at <a href=\"mailto: data-protection@ucl.ac.uk\">"
+				+ "data-protection@ucl.ac.uk</a>. UCL's Data Protection Officer can also be contacted at "
+				+ "<a href=\"data-protection@ucl.ac.uk\">data-protection@ucl.ac.uk</a>.<br><br>"
+				+ "Your personal data will be processed for the purposes outlined in this notice. The "
+				+ "legal basis that would be used to process your <i>personal data</i> will be "
+				+ "performance of a task in the pulic interest. Your personal data will be processed "
+				+ "so long as it is required for the research project. If we are able to anonumise or pseudonymise "
+				+ "the personal data you provide we will undertake this, and will endeavour to minimise "
+				+ "the processing of personal data wherever possible. Data from this project may "
+				+ "also be uploaded to a public repository such as <a href=\"https://osf.io\">https://osf.io</a>. "
+				+ "Any data uploaded to a public repository will be anonymised so that it will not "
+				+ "be possible to identify you from this data. No personal data will be uploaded publically. "
+				+ "If you have any concerns or complaints about this research you should "
+				+ "<a href=\"mailto: sam.gilbert@ucl.ac.uk\">contact</a> the principal researcher. "
+				+ "If you feel that your complaint has not been handled to your satisfaction you can "
+				+ "contact the Chair of the UCL Research Ethics Committee - "
+				+ "<a href=\"mailto: ethics@ucl.ac.uk\">ethics@ucl.ac.uk</a>.");
     }
 
 }

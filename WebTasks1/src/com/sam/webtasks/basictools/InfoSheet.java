@@ -67,8 +67,9 @@ public class InfoSheet {
 
         projectTitleText.setText("Title of project: Online response time studies of attention and memory");
 
-        approvalHTML.setHTML("This study has been approved by the UCL Research Ethics Committee "
-                + "as Project ID Number: 1584/003");
+        approvalHTML.setHTML("Please scroll to the bottom to view all content.<br><br>"
+        		+ "This study has been approved by the UCL Research Ethics Committee "
+                + "as Project ID Number: ICN-VW-28-22-2023");
 
         contactTitle.setText("Name, address and contact details of investigators: ");
 

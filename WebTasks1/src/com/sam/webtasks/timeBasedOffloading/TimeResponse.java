@@ -88,19 +88,31 @@ public class TimeResponse {
 			}.schedule(TimeBlock.RSI);
 		}
 		
+		String data="";
+		
 		if (TimeDisplay.waitForSpacebar) {
 			if (response==TimeBlock.instructionKey) {
+				data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + ",";
+				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "1," + TimeStamp.Now();
+				
+				PHP.logData("TB_instruction_response", data, false);
+				
 				TimeDisplay.instructionString = "Hit the " + (char)(TimeBlock.PMchar+'A') + " key at " + TimeDisplay.timeString(TimeBlock.lastTarget);
 				TimeDisplay.stimulusDisplay.setHTML(TimeDisplay.instructionString);
 				
 				Points.subtractPoints(TimeBlock.PMinstructionCost);
 			} else if (response==TimeBlock.spaceBarKey) {
+				data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + ",";
+				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "0," + TimeStamp.Now();
+				
+				PHP.logData("TB_instruction_response", data, false);
+				
 				if (TimeBlock.instructionOn) {
 					TimeBlock.instructionOn=false;
 					
 					int instructionReadingTime = (int) (new Date().getTime() - TimeBlock.instructionTimeStamp.getTime());
 					
-					String data = TimeBlock.blockNumber + "," + TimeBlock.trialNumber + ",";
+					data = TimeBlock.blockNumber + "," + TimeBlock.trialNumber + ",";
 					data = data + instructionReadingTime + "," + TimeBlock.currentTime + "," + TimeStamp.Now();
 					
 					PHP.logData("instuctionReadingTime", data, false);
@@ -141,7 +153,7 @@ public class TimeResponse {
 			if ((response == TimeBlock.matchKey)||(response == TimeBlock.nonMatchKey)) { //increment trial number if one of the 2back keys was pressed
 				TimeBlock.trialNumber++;
 			} else if (response == TimeBlock.revealClockKey) {
-				String data = TimeBlock.blockNumber + "," + TimeBlock.timerButtonVisible + ",";
+				data = TimeBlock.blockNumber + "," + TimeBlock.timerButtonVisible + ",";
 				data = data + TimeBlock.reminderButtonVisible + ",";
 				data = data + TimeBlock.trialNumber + "," + TimeDisplay.stimulus + ",";
 				data = data + TimeDisplay.awaitingPMresponse + "," + (TimeDisplay.stimulus == TimeDisplay.stimulus_2back) + ",";
@@ -175,7 +187,7 @@ public class TimeResponse {
 				}
 			}
 			
-			String data = TimeBlock.blockNumber + "," + TimeBlock.timerButtonVisible + ",";
+			data = TimeBlock.blockNumber + "," + TimeBlock.timerButtonVisible + ",";
 			data = data + TimeBlock.reminderButtonVisible + ",";
 			data = data + TimeBlock.trialNumber + "," + TimeDisplay.stimulus + ",";
 			data = data + response + "," + RT + ",";

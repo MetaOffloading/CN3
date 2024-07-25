@@ -264,6 +264,7 @@ public class TimeDisplay {
 				
 				TimeBlock.nextInstruction = TimeBlock.nextTarget+TimeBlock.targetInstructionInterval;
 				TimeBlock.lastTarget = TimeBlock.nextTarget; //save this, to check against PM response
+				TimeBlock.lastPMinterval = TimeBlock.nextTarget - TimeBlock.currentTime;
 				TimeBlock.nextTarget = TimeBlock.nextInstruction+generateDelay();
 				
 				cancel();

@@ -32,6 +32,7 @@ public class TimeBlock {
 	public static int nextInstruction;
 	public static int nextTarget;
 	public static int lastTarget;
+	public static int lastPMinterval;
 	public static int blockDuration;
 	public static int tickTime;
 	public static int RSI;
@@ -80,6 +81,11 @@ public class TimeBlock {
 	public static int nBackNonMatchCorr; //number of correct 'nonmatch' responses
 	public static int nBackTargetsPresented;
 	public static int PMhits;
+	public static int PMhits10;
+	public static int PMhits30;
+	public static int getInstruction;
+	public static int getInstruction10;
+	public static int getInstruction30;
 	public static int timerButtonOperated;
 	public static int reminderButtonOperated;
 	public static int timerClicks; //how many times does the offload button need to be clicked?
@@ -139,6 +145,11 @@ public class TimeBlock {
 		nBackNonMatchCorr = 0;
 		nBackTargetsPresented = 0;
 		PMhits=0;
+		PMhits10=0;
+		PMhits30=0;
+		getInstruction=0;
+		getInstruction10=0;
+		getInstruction30=0;
 		timerButtonOperated=0;
 		reminderButtonOperated=0;
 		nReminders=0;

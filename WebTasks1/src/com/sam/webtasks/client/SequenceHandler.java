@@ -167,7 +167,7 @@ public class SequenceHandler {
 				Slider.Run(Instructions.Get(32), "0%", "100%");
 				break;
 			case 10:
-				PHP.logData("slider_10s", "" + Slider.getSliderValue(), true);
+				PHP.logData("slider_30s", "" + Slider.getSliderValue(), true);
 				break;
 			case 11:
 				ClickPage.Run(Instructions.Get(40), "Next");
@@ -234,6 +234,8 @@ public class SequenceHandler {
 				String data2 = TimeStamp.Now() + ",";
 				data2 = data2 + SessionInfo.prolificExperimentCode + ",";
 				data2 = data2 + Counterbalance.getFactorLevel("whichRewardFirst") + ",";
+				data2 = data2 + Points.points + ",";
+				data2 = data2 + Points.getMoneyString(Points.points) + ",";
 				data2 = data2 + SessionInfo.gender + ",";
 				data2 = data2 + SessionInfo.age;
 				

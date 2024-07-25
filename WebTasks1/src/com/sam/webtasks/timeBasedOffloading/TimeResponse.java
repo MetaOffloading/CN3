@@ -52,7 +52,10 @@ public class TimeResponse {
 					data = data + TimeBlock.timerButtonVisible + ",";
 					data = data + TimeBlock.reminderButtonVisible + ",";
 					data = data + TimeBlock.nBackNonMatchCorr + "," + TimeBlock.nBackMatchCorr + ",";
-					data = data + TimeBlock.PMhits + "," + TimeBlock.nReminders;
+					data = data + TimeBlock.PMhits + "," + TimeBlock.PMhits10 + ",";
+					data = data + TimeBlock.PMhits30 + "," + TimeBlock.getInstruction + ",";
+					data = data + TimeBlock.getInstruction10 + "," + TimeBlock.getInstruction30 + ",";
+					data = data + TimeBlock.PMreward + "," + TimeBlock.nReminders;
 					
 					PHP.logData("blockEnd", data, true);
 				}
@@ -92,6 +95,14 @@ public class TimeResponse {
 		
 		if (TimeDisplay.waitForSpacebar) {
 			if (response==TimeBlock.instructionKey) {
+				TimeBlock.getInstruction++;
+				
+				if ((TimeBlock.lastTarget - TimeBlock.currentTime)==10) {
+					TimeBlock.getInstruction10++;
+				} else if ((TimeBlock.nextTarget - TimeBlock.currentTime) == 30) {
+					TimeBlock.getInstruction30++;
+				}
+				
 				data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + ",";
 				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "1," + TimeStamp.Now();
 				
@@ -191,7 +202,9 @@ public class TimeResponse {
 			data = data + TimeBlock.reminderButtonVisible + ",";
 			data = data + TimeBlock.trialNumber + "," + TimeDisplay.stimulus + ",";
 			data = data + response + "," + RT + ",";
-			data = data + TimeDisplay.awaitingPMresponse + "," + (TimeDisplay.stimulus == TimeDisplay.stimulus_2back) + ",";
+			data = data + TimeDisplay.awaitingPMresponse + "," + TimeBlock.lastPMinterval + ",";
+			data = data + TimeBlock.PMreward + ",";
+			data = data + (TimeDisplay.stimulus == TimeDisplay.stimulus_2back) + ",";
 			data = data + nBackCorrect + "," + TimeBlock.nextTarget + "," + TimeBlock.currentTime + ",";
 			data = data + TimeStamp.Now();
 			
@@ -201,6 +214,12 @@ public class TimeResponse {
 				if (TimeDisplay.awaitingPMresponse) {
 					if (Math.abs(TimeBlock.currentTime-TimeBlock.lastTarget) <= TimeBlock.PMwindow) {
 						TimeBlock.PMhits++;
+						
+						if(TimeBlock.lastPMinterval==10) {
+							TimeBlock.PMhits10++;
+						} else if (TimeBlock.lastPMinterval==30) {
+							TimeBlock.PMhits30++;
+						}
 						
 						TimeDisplay.awaitingPMresponse=false;
 						

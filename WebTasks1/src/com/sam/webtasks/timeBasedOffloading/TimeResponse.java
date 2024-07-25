@@ -99,7 +99,7 @@ public class TimeResponse {
 				
 				if ((TimeBlock.lastTarget - TimeBlock.currentTime)==10) {
 					TimeBlock.getInstruction10++;
-				} else if ((TimeBlock.nextTarget - TimeBlock.currentTime) == 30) {
+				} else if ((TimeBlock.lastTarget - TimeBlock.currentTime) == 30) {
 					TimeBlock.getInstruction30++;
 				}
 				

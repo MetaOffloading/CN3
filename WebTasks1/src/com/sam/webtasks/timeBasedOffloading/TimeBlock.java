@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.sam.webtasks.basictools.PHP;
 import com.sam.webtasks.basictools.Points;
 import com.sam.webtasks.basictools.TimeStamp;
+import com.sam.webtasks.client.SequenceHandler;
 
 public class TimeBlock {
 	//display settings
@@ -96,7 +97,9 @@ public class TimeBlock {
 	
 	//has an instruction just been presented?
 	public static boolean instructionOn;
+	public static boolean instructionShown;
 	public static Date instructionTimeStamp;
+	
 	
 	
 	//multiple possible PM keys?
@@ -123,7 +126,7 @@ public class TimeBlock {
 		optionalPM=false;
 		clockVisible=true;
 		showPoints=false;
-		PMreward=10;
+		PMreward=SequenceHandler.HR;
 		PMinstructionCost=2;
 		timerButtonVisible=true;
 		reminderButtonVisible=true;
@@ -158,6 +161,7 @@ public class TimeBlock {
 		reminderClicks=1;
 		spacebarPressed=false;
 		instructionOn=false;
+		instructionShown=false;
 		
 		if (TimeDisplay.isInitialised == false) {
 			TimeDisplay.Init();

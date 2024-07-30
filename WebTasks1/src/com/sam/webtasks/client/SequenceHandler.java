@@ -57,8 +57,11 @@ import com.sam.webtasks.iotask2.IOtask2PreTrial;
 
 
 public class SequenceHandler {
-	public final static int HR=20; // high reward
-	public final static int LR=10; // low reward
+	public final static int HR=10; // high reward
+	public final static int LR=5; // low reward
+	public final static int PMinstructionCost=1;
+	public final static String maxBonus = "£2.30";
+	
 	public static int block_id=0;
 	
 	public static void RunBlock() {
@@ -68,7 +71,7 @@ public class SequenceHandler {
 		TimeBlock.timerButtonVisible = false;
 		TimeBlock.reminderButtonVisible = false;
 		TimeBlock.multiPM=true;
-		TimeBlock.PMinstructionCost=2;
+		TimeBlock.PMinstructionCost=PMinstructionCost;
 		TimeBlock.blockNumber=block_id;
 		TimeBlock.optionalPM=true;
 		TimeBlock.PMreward=LR;
@@ -183,7 +186,7 @@ public class SequenceHandler {
 				TimeBlock.PMinterval_list.add(10);
 				TimeBlock.PMinterval_list.add(30);
 				TimeBlock.shufflePMintervals=false;
-				TimeBlock.PMinstructionCost=2;
+				TimeBlock.PMinstructionCost=SequenceHandler.PMinstructionCost;
 				TimeBlock.optionalPM=true;
 				TimeBlock.blockNumber=-4;
 				TimeBlock.Run();

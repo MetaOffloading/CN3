@@ -94,7 +94,10 @@ public class TimeResponse {
 		String data="";
 		
 		if (TimeDisplay.waitForSpacebar) {
-			if (response==TimeBlock.instructionKey) {
+			if ((response==TimeBlock.instructionKey)&(!TimeBlock.instructionShown)) {
+				//we only want to record this keypress the first time they do it
+				TimeBlock.instructionShown=true;
+				
 				TimeBlock.getInstruction++;
 				
 				if ((TimeBlock.lastTarget - TimeBlock.currentTime)==10) {
@@ -113,6 +116,8 @@ public class TimeResponse {
 				
 				Points.subtractPoints(TimeBlock.PMinstructionCost);
 			} else if (response==TimeBlock.spaceBarKey) {
+				TimeBlock.instructionShown = false;
+				
 				data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + ",";
 				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "0," + TimeStamp.Now();
 				
@@ -203,7 +208,7 @@ public class TimeResponse {
 			data = data + TimeBlock.trialNumber + "," + TimeDisplay.stimulus + ",";
 			data = data + response + "," + RT + ",";
 			data = data + TimeDisplay.awaitingPMresponse + "," + TimeBlock.lastPMinterval + ",";
-			data = data + TimeBlock.PMreward + ",";
+			data = data + TimeBlock.PMreward + "," + TimeBlock.PMkey + ",";
 			data = data + (TimeDisplay.stimulus == TimeDisplay.stimulus_2back) + ",";
 			data = data + nBackCorrect + "," + TimeBlock.nextTarget + "," + TimeBlock.currentTime + ",";
 			data = data + TimeStamp.Now();

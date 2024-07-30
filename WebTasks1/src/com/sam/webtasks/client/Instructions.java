@@ -62,12 +62,13 @@ public class Instructions {
 		case 40:
 			i = "From now on, you can decide whether to take the timer task when it is presented. "
 					+ "As before, you will earn extra points and money if you remember to press the special key. "
-					+ "For example, you may be told <br><br> \"You can earn 10 points at 0:20 <br><br> For Instructions "
-					+ "press Enter <br><br> (Cost: 2 points) <br><br> Or Space to continue\" <br><br>"
+					+ "For example, you may be told <br><br> \"You can earn " + SequenceHandler.HR + " points at 0:20 <br><br> For Instructions "
+					+ "press Enter <br><br> (Cost: " + SequenceHandler.PMinstructionCost + " points) <br><br> Or Space to continue\" <br><br>"
 					+ "To take the timer task, you should press Enter to reveal the instructed time and special key. "
-					+ "This will come with a small cost of 2 points but you will then earn 10 points if you remember the special key. "
+					+ "This will come with a small cost of " + SequenceHandler.PMinstructionCost + " points but you will then earn "
+					+ SequenceHandler.HR + " points if you remember the special key. "
 					+ "<br><br>You will receive £1 for every 100 points you score, which means that you can earn an additional "
-					+ "bonus payment of over £4.50, on top of the base payment from Prolific."
+					+ "bonus payment of over " + SequenceHandler.maxBonus + ", on top of the base payment from Prolific."
 					+ "<br><br>Alternatively, you can opt out of the timer task. This will avoid the small cost but you will not "
 					+ "score any bonus points when you do this. To opt out of the timer task, just press the spacebar to continue with the "
 					+ "letter task. <br><br> "
@@ -76,8 +77,8 @@ public class Instructions {
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 41:
-			i = "Sometimes in this experiment you can earn 10 points when you remember to press the special key. At other times you can "
-					+ "earn 20 points. You will always be told the number of bonus points "
+			i = "Sometimes in this experiment you can earn " + SequenceHandler.LR + " points when you remember to press the special key. At other times you can "
+					+ "earn " + SequenceHandler.HR + " points. You will always be told the number of bonus points "
 					+ "before deciding whether to do the timer task. Please pay attention to the instructions before you begin each block."
 					+ "<br><br>If you choose to do the timer task, don't forget to do the letter task as well. "
 					+ "You need to score at least 70% accuracy in the letter task, otherwise you will not receive any bonus "
@@ -109,7 +110,7 @@ public class Instructions {
 	}
 	
 	public static String InfoText() {
-		String expDur = "60";
+		String expDur = "40";
 		String eligibility = "All registered users of Prolific ";
 		String nVolunteers = "50";
 		

@@ -45,7 +45,7 @@ public class Instructions {
 			break;
 		case 31:
 			i = "Now that you have had some practice, we would like you to tell us how accurately you "
-					+ "think you can perform the timer task. We will ask you to make seprate predictions for "
+					+ "think you can perform the timer task. We will ask you to make seperate predictions for "
 					+ "how well you can perform the task when you have to wait A) 10 seconds and "
 					+ "B) 30 seconds until it is time to press the special key.<br><br> "
 					+ "First of all, please use the scale below to indicate what percentage "

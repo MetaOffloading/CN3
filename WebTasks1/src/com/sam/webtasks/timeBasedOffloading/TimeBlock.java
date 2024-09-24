@@ -41,7 +41,10 @@ public class TimeBlock {
 	public static int targetInstructionInterval;
 	public static boolean defaultPMintervals;
 	public static ArrayList<Integer> PMinterval_list = new ArrayList<Integer>();
+	public static ArrayList<Integer> instructionCostShort = new ArrayList<Integer>();
+	public static ArrayList<Integer> instructionCostLong = new ArrayList<Integer>();
 	public static boolean shufflePMintervals;
+	public static boolean shuffleInstructionCost;
 	public static int blockNumber;
 	public static int trialNumber;
 	
@@ -82,11 +85,11 @@ public class TimeBlock {
 	public static int nBackNonMatchCorr; //number of correct 'nonmatch' responses
 	public static int nBackTargetsPresented;
 	public static int PMhits;
-	public static int PMhits10;
-	public static int PMhits30;
+	public static int PMhitsShort;
+	public static int PMhitsLong;
 	public static int getInstruction;
-	public static int getInstruction10;
-	public static int getInstruction30;
+	public static int getInstructionShort;
+	public static int getInstructionLong;
 	public static int timerButtonOperated;
 	public static int reminderButtonOperated;
 	public static int timerClicks; //how many times does the offload button need to be clicked?
@@ -104,6 +107,10 @@ public class TimeBlock {
 	
 	//multiple possible PM keys?
 	public static boolean multiPM = false;
+	
+	//multiple possible instruction costs?
+	public static boolean multiCost = false;
+	
 	
 	//should offloading be allowed in this block?
 	public static boolean allowOffloading=true;
@@ -126,13 +133,13 @@ public class TimeBlock {
 		optionalPM=false;
 		clockVisible=true;
 		showPoints=false;
-		PMreward=SequenceHandler.HR;
+		PMreward=SequenceHandler.reward;
 		PMinstructionCost=2;
 		timerButtonVisible=true;
 		reminderButtonVisible=true;
 		currentTime=0;
 		clockStartTime=0;
-		targetInstructionInterval=10;
+		targetInstructionInterval=SequenceHandler.gapInterval;
 		nextInstruction=targetInstructionInterval;		
 		blockDuration=365;
 		multiPM=false;
@@ -142,17 +149,18 @@ public class TimeBlock {
 		PMinterval_list.clear();
 		defaultPMintervals = true;
 		shufflePMintervals = true;
+		shuffleInstructionCost = true;
 		blockNumber = -1;
 		trialNumber = 0;
 		nBackMatchCorr = 0;
 		nBackNonMatchCorr = 0;
 		nBackTargetsPresented = 0;
 		PMhits=0;
-		PMhits10=0;
-		PMhits30=0;
+		PMhitsShort=0;
+		PMhitsLong=0;
 		getInstruction=0;
-		getInstruction10=0;
-		getInstruction30=0;
+		getInstructionShort=0;
+		getInstructionLong=0;
 		timerButtonOperated=0;
 		reminderButtonOperated=0;
 		nReminders=0;
@@ -183,17 +191,31 @@ public class TimeBlock {
 	
 	public static void Run() {
 		if (defaultPMintervals) {
-			for (int i = 0; i < 3; i++) {
-				PMinterval_list.add(10);
-				PMinterval_list.add(30);
+			for (int i = 0; i < SequenceHandler.nIntentions; i++) {
+				PMinterval_list.add(SequenceHandler.shortInterval);
+				PMinterval_list.add(SequenceHandler.longInterval);
 			}
 			
-			blockDuration = 185;
+			int n=SequenceHandler.nIntentions;
+			int gap=SequenceHandler.gapInterval;
+			int dur=SequenceHandler.shortInterval + SequenceHandler.longInterval + 2*gap;
+			
+			blockDuration = gap + n*dur;
 		}
 		
 		if (shufflePMintervals) {
 			for (int i = 0; i < PMinterval_list.size(); i++) {
 				Collections.swap(PMinterval_list, i, Random.nextInt(PMinterval_list.size()));
+			}
+		}
+		
+		if (shuffleInstructionCost) {
+			for (int i = 0; i < instructionCostShort.size(); i++) {
+				Collections.swap(instructionCostShort, i, Random.nextInt(instructionCostShort.size()));
+			}
+			
+			for (int i = 0; i < instructionCostLong.size(); i++) {
+				Collections.swap(instructionCostLong, i, Random.nextInt(instructionCostLong.size()));
 			}
 		}
 		

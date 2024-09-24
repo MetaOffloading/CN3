@@ -52,9 +52,9 @@ public class TimeResponse {
 					data = data + TimeBlock.timerButtonVisible + ",";
 					data = data + TimeBlock.reminderButtonVisible + ",";
 					data = data + TimeBlock.nBackNonMatchCorr + "," + TimeBlock.nBackMatchCorr + ",";
-					data = data + TimeBlock.PMhits + "," + TimeBlock.PMhits10 + ",";
-					data = data + TimeBlock.PMhits30 + "," + TimeBlock.getInstruction + ",";
-					data = data + TimeBlock.getInstruction10 + "," + TimeBlock.getInstruction30 + ",";
+					data = data + TimeBlock.PMhits + "," + TimeBlock.PMhitsShort + ",";
+					data = data + TimeBlock.PMhitsLong + "," + TimeBlock.getInstruction + ",";
+					data = data + TimeBlock.getInstructionShort + "," + TimeBlock.getInstructionLong + ",";
 					data = data + TimeBlock.PMreward + "," + TimeBlock.nReminders;
 					
 					PHP.logData("blockEnd", data, true);
@@ -100,10 +100,10 @@ public class TimeResponse {
 				
 				TimeBlock.getInstruction++;
 				
-				if ((TimeBlock.lastTarget - TimeBlock.currentTime)==10) {
-					TimeBlock.getInstruction10++;
-				} else if ((TimeBlock.lastTarget - TimeBlock.currentTime) == 30) {
-					TimeBlock.getInstruction30++;
+				if ((TimeBlock.lastTarget - TimeBlock.currentTime)==SequenceHandler.shortInterval) {
+					TimeBlock.getInstructionShort++;
+				} else if ((TimeBlock.lastTarget - TimeBlock.currentTime) == SequenceHandler.longInterval) {
+					TimeBlock.getInstructionLong++;
 				}
 				
 				data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + ",";
@@ -220,10 +220,10 @@ public class TimeResponse {
 					if (Math.abs(TimeBlock.currentTime-TimeBlock.lastTarget) <= TimeBlock.PMwindow) {
 						TimeBlock.PMhits++;
 						
-						if(TimeBlock.lastPMinterval==10) {
-							TimeBlock.PMhits10++;
-						} else if (TimeBlock.lastPMinterval==30) {
-							TimeBlock.PMhits30++;
+						if(TimeBlock.lastPMinterval==SequenceHandler.shortInterval) {
+							TimeBlock.PMhitsShort++;
+						} else if (TimeBlock.lastPMinterval==SequenceHandler.longInterval) {
+							TimeBlock.PMhitsLong++;
 						}
 						
 						TimeDisplay.awaitingPMresponse=false;

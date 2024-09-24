@@ -57,11 +57,14 @@ import com.sam.webtasks.iotask2.IOtask2PreTrial;
 
 
 public class SequenceHandler {
-	public final static int HR=10; // high reward
-	public final static int LR=5; // low reward
+	public final static int reward=10; //there's only one reward value in this experiment
 	public final static int PMinstructionCost=1;
-	public final static String maxBonus = "£2.30";
+	public final static int shortInterval=5;
+	public final static int longInterval=25;
+	public final static int gapInterval=5;
+	public final static int nIntentions=11; //number of intentions per block, per interval
 	
+	public final static String maxBonus = "£2.30";
 	public static int block_id=0;
 	
 	public static void RunBlock() {
@@ -71,13 +74,20 @@ public class SequenceHandler {
 		TimeBlock.timerButtonVisible = false;
 		TimeBlock.reminderButtonVisible = false;
 		TimeBlock.multiPM=true;
-		TimeBlock.PMinstructionCost=PMinstructionCost;
+		TimeBlock.multiCost=true;
+		TimeBlock.shuffleInstructionCost=true;
 		TimeBlock.blockNumber=block_id;
 		TimeBlock.optionalPM=true;
-		TimeBlock.PMreward=LR;
-		if ((Counterbalance.getFactorLevel("whichRewardFirst")+TimeBlock.blockNumber) % 2 == 0) {
-			TimeBlock.PMreward=HR;
+		TimeBlock.PMreward=reward;
+		
+		TimeBlock.instructionCostShort.clear();
+		TimeBlock.instructionCostLong.clear();
+		
+		for (int i = 0; i < 10; i++) {
+			TimeBlock.instructionCostShort.add(i);
+			TimeBlock.instructionCostLong.add(i);
 		}
+		
 		TimeBlock.Run();
 		block_id++;
 	}

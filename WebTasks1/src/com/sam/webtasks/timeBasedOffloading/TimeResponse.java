@@ -114,7 +114,7 @@ public class TimeResponse {
 				TimeDisplay.instructionString = "Hit the " + (char)(TimeBlock.PMchar+'A') + " key at " + TimeDisplay.timeString(TimeBlock.lastTarget);
 				TimeDisplay.stimulusDisplay.setHTML(TimeDisplay.instructionString);
 				
-				Points.subtractPoints(TimeBlock.PMinstructionCost);
+				Points.subtractPoints(TimeBlock.lastCost);
 			} else if (response==TimeBlock.spaceBarKey) {
 				TimeBlock.instructionShown = false;
 				

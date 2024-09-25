@@ -265,8 +265,9 @@ public class TimeDisplay {
 				TimeBlock.nextInstruction = TimeBlock.nextTarget+TimeBlock.targetInstructionInterval;
 				TimeBlock.lastTarget = TimeBlock.nextTarget; //save this, to check against PM response
 				TimeBlock.lastPMinterval = TimeBlock.nextTarget - TimeBlock.currentTime;
+				TimeBlock.lastCost = TimeBlock.PMinstructionCost;
 				TimeBlock.nextTarget = TimeBlock.nextInstruction+generateDelay();
-				
+	
 				cancel();
 			}
 		}
@@ -313,7 +314,13 @@ public class TimeDisplay {
 		if (TimeBlock.PMinterval_list.size()>0) {
 			delay = TimeBlock.PMinterval_list.get(0);
 			TimeBlock.PMinterval_list.remove(0);
+			
+			if (TimeBlock.multiCost) {
+				TimeBlock.PMinstructionCost=TimeBlock.instructionCosts.get(0);
+				TimeBlock.instructionCosts.remove(0);
+			}
 		}
+
 		return(delay);
 	}
 	

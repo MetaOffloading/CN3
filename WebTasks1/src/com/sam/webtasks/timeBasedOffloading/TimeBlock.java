@@ -26,6 +26,7 @@ public class TimeBlock {
 	//points settings
 	public static int PMreward;
 	public static int PMinstructionCost;
+	public static int lastCost;
 	
 	//timing settings
 	public static int currentTime;
@@ -41,8 +42,7 @@ public class TimeBlock {
 	public static int targetInstructionInterval;
 	public static boolean defaultPMintervals;
 	public static ArrayList<Integer> PMinterval_list = new ArrayList<Integer>();
-	public static ArrayList<Integer> instructionCostShort = new ArrayList<Integer>();
-	public static ArrayList<Integer> instructionCostLong = new ArrayList<Integer>();
+	public static ArrayList<Integer> instructionCosts = new ArrayList<Integer>();
 	public static boolean shufflePMintervals;
 	public static boolean shuffleInstructionCost;
 	public static int blockNumber;
@@ -202,22 +202,44 @@ public class TimeBlock {
 			
 			blockDuration = gap + n*dur;
 		}
-		
+
 		if (shufflePMintervals) {
-			for (int i = 0; i < PMinterval_list.size(); i++) {
-				Collections.swap(PMinterval_list, i, Random.nextInt(PMinterval_list.size()));
+			if (multiCost) {
+				if (PMinterval_list.size() != instructionCosts.size()) {
+					Window.alert("Warning: intervals and costs do not have same length.");
+				}
+
+				// first generate a list of indices, corresponding to the number intervals and costs
+				ArrayList<Integer> indices = new ArrayList<>();
+
+				for (int i = 0; i < PMinterval_list.size(); i++) {
+					indices.add(i);
+				}
+
+				//shuffle it into random order
+				for (int i = 0; i < indices.size(); i++) {
+					Collections.swap(indices, i, Random.nextInt(indices.size()));
+				}
+				
+				//assign the intervals and costs to temporary variables, in the order specified by the shuffled indices
+				ArrayList<Integer> tmp_PMinterval_list = new ArrayList<>();
+				ArrayList<Integer> tmp_instructionCosts = new ArrayList<>();
+				
+				for (int i = 0; i < indices.size(); i++) {
+					tmp_PMinterval_list.add(PMinterval_list.get(indices.get(i)));
+					tmp_instructionCosts.add(instructionCosts.get(indices.get(i)));
+				}
+				
+				//now replace the intervals and costs with the shuffled variables
+				PMinterval_list = tmp_PMinterval_list;
+				instructionCosts = tmp_instructionCosts;
+			} else {
+				for (int i = 0; i < PMinterval_list.size(); i++) {
+					Collections.swap(PMinterval_list,  i,  Random.nextInt(PMinterval_list.size()));
+				}
 			}
 		}
-		
-		if (shuffleInstructionCost) {
-			for (int i = 0; i < instructionCostShort.size(); i++) {
-				Collections.swap(instructionCostShort, i, Random.nextInt(instructionCostShort.size()));
-			}
-			
-			for (int i = 0; i < instructionCostLong.size(); i++) {
-				Collections.swap(instructionCostLong, i, Random.nextInt(instructionCostLong.size()));
-			}
-		}
+
 		
 		if (targetInstructionInterval<0) { //negative interval means don't present instructions
 			targetInstructionInterval = Integer.MAX_VALUE;

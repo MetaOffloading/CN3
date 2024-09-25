@@ -62,11 +62,11 @@ public class Instructions {
 		case 40:
 			i = "From now on, you can decide whether to take the timer task when it is presented. "
 					+ "As before, you will earn extra points and money if you remember to press the special key. "
-					+ "For example, you may be told <br><br> \"You can earn " + SequenceHandler.HR + " points at 0:20 <br><br> For Instructions "
+					+ "For example, you may be told <br><br> \"You can earn " + SequenceHandler.reward + " points at 0:20 <br><br> For Instructions "
 					+ "press Enter <br><br> (Cost: " + SequenceHandler.PMinstructionCost + " points) <br><br> Or Space to continue\" <br><br>"
 					+ "To take the timer task, you should press Enter to reveal the instructed time and special key. "
 					+ "This will come with a small cost of " + SequenceHandler.PMinstructionCost + " points but you will then earn "
-					+ SequenceHandler.HR + " points if you remember the special key. "
+					+ SequenceHandler.reward + " points if you remember the special key. "
 					+ "<br><br>You will receive £1 for every 100 points you score, which means that you can earn an additional "
 					+ "bonus payment of over " + SequenceHandler.maxBonus + ", on top of the base payment from Prolific."
 					+ "<br><br>Alternatively, you can opt out of the timer task. This will avoid the small cost but you will not "
@@ -77,25 +77,16 @@ public class Instructions {
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 41:
-			i = "Sometimes in this experiment you can earn " + SequenceHandler.LR + " points when you remember to press the special key. At other times you can "
-					+ "earn " + SequenceHandler.HR + " points. You will always be told the number of bonus points "
+			i = "Sometimes in this experiment you can earn " + SequenceHandler.reward + " points when you remember to press the special key. At other times you can "
+					+ "earn " + SequenceHandler.reward + " points. You will always be told the number of bonus points "
 					+ "before deciding whether to do the timer task. Please pay attention to the instructions before you begin each block."
 					+ "<br><br>If you choose to do the timer task, don't forget to do the letter task as well. "
 					+ "You need to score at least 70% accuracy in the letter task, otherwise you will not receive any bonus "
 					+ "payments from the timer task.<br><br>The experiment will now begin. Please click below to proceed";
 			break;
-		case 50:
-			int reward;
-			if ((Counterbalance.getFactorLevel("whichRewardFirst")+SequenceHandler.block_id) % 2 == 0) {
-				reward = SequenceHandler.HR;
-			}
-			else {
-				reward = SequenceHandler.LR;
-			}
-			
-			
+		case 50:			
 			i = "In this block, you can earn " 
-					+ reward 
+					+ SequenceHandler.reward 
 					+ " points for successfully completing the optional timer task.";
 			break;
 		case 120:

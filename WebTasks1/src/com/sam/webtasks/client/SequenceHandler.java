@@ -80,12 +80,11 @@ public class SequenceHandler {
 		TimeBlock.optionalPM=true;
 		TimeBlock.PMreward=reward;
 		
-		TimeBlock.instructionCostShort.clear();
-		TimeBlock.instructionCostLong.clear();
-		
-		for (int i = 0; i < 10; i++) {
-			TimeBlock.instructionCostShort.add(i);
-			TimeBlock.instructionCostLong.add(i);
+		TimeBlock.instructionCosts.clear();
+	
+		for (int i = 0; i < 11; i++) {
+			TimeBlock.instructionCosts.add(i);
+			TimeBlock.instructionCosts.add(i);
 		}
 		
 		TimeBlock.Run();
@@ -102,11 +101,11 @@ public class SequenceHandler {
 			/***********************************************************************
 			 * The code here defines the main sequence of events in the experiment *
 			 **********************************************************************/
-			case 1:
+			case 1001:
 				ClickPage.Run(Instructions.Get(10), "Next");
 				break;
 			
-			case 2:
+			case 1002:
 				TimeBlock.Init();
 				TimeBlock.blockDuration=-10; //minus 10 means 10 trials instead of 10 seconds
 				TimeBlock.defaultPMintervals=false;
@@ -117,7 +116,7 @@ public class SequenceHandler {
 				TimeBlock.blockNumber=-1;
 				TimeBlock.Run();
 				break;
-			case 3:
+			case 1003:
 				if ((TimeBlock.nBackNonMatchCorr==0)|(TimeBlock.nBackMatchCorr==0)) {
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2);
 					
@@ -207,16 +206,16 @@ public class SequenceHandler {
 			case 14:
 				ClickPage.Run(Instructions.Get(50), "Next");
 				break;
-			case 15:
+			case 1:
 				ProgressBar.Initialise();
 				ProgressBar.Show();
 				ProgressBar.SetProgress(0,7);
 				RunBlock();
 				break;
-			case 16:
+			case 2:
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
-			case 17:
+			case 3:
 				RunBlock();
 				break;
 			case 18:

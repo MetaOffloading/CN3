@@ -68,7 +68,7 @@ public class SequenceHandler {
 	public static int block_id=0;
 	
 	public static void RunBlock() {
-		ProgressBar.SetProgress(block_id+1,7);
+		//ProgressBar.SetProgress(block_id+1,7);
 		TimeBlock.Init();
 		TimeBlock.showPoints = true;
 		TimeBlock.timerButtonVisible = false;
@@ -79,6 +79,7 @@ public class SequenceHandler {
 		TimeBlock.blockNumber=block_id;
 		TimeBlock.optionalPM=true;
 		TimeBlock.PMreward=reward;
+		TimeBlock.clockProgress=true;
 		
 		TimeBlock.instructionCosts.clear();
 	
@@ -101,11 +102,11 @@ public class SequenceHandler {
 			/***********************************************************************
 			 * The code here defines the main sequence of events in the experiment *
 			 **********************************************************************/
-			case 1001:
+			case 1:
 				ClickPage.Run(Instructions.Get(10), "Next");
 				break;
 			
-			case 1002:
+			case 2:
 				TimeBlock.Init();
 				TimeBlock.blockDuration=-10; //minus 10 means 10 trials instead of 10 seconds
 				TimeBlock.defaultPMintervals=false;
@@ -116,7 +117,7 @@ public class SequenceHandler {
 				TimeBlock.blockNumber=-1;
 				TimeBlock.Run();
 				break;
-			case 1003:
+			case 3:
 				if ((TimeBlock.nBackNonMatchCorr==0)|(TimeBlock.nBackMatchCorr==0)) {
 					SequenceHandler.SetPosition(SequenceHandler.GetPosition()-2);
 					
@@ -192,10 +193,10 @@ public class SequenceHandler {
 				TimeBlock.reminderButtonVisible = false;
 				TimeBlock.defaultPMintervals=false;
 				TimeBlock.multiPM=true;
-				TimeBlock.PMinterval_list.add(10);
-				TimeBlock.PMinterval_list.add(30);
+				TimeBlock.PMinterval_list.add(shortInterval);
+				TimeBlock.PMinterval_list.add(longInterval);
 				TimeBlock.shufflePMintervals=false;
-				TimeBlock.PMinstructionCost=SequenceHandler.PMinstructionCost;
+				TimeBlock.PMinstructionCost=PMinstructionCost;
 				TimeBlock.optionalPM=true;
 				TimeBlock.blockNumber=-4;
 				TimeBlock.Run();
@@ -206,43 +207,19 @@ public class SequenceHandler {
 			case 14:
 				ClickPage.Run(Instructions.Get(50), "Next");
 				break;
-			case 1:
+			case 15:
 				ProgressBar.Initialise();
 				ProgressBar.Show();
-				ProgressBar.SetProgress(0,7);
+				ProgressBar.SetProgress(0,890);
 				RunBlock();
 				break;
-			case 2:
+			case 16:
 				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
 				break;
-			case 3:
+			case 17:
 				RunBlock();
 				break;
 			case 18:
-				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
-				break;
-			case 19:
-				RunBlock();
-				break;
-			case 20:
-				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
-				break;
-			case 21:
-				RunBlock();
-				break;
-			case 22:
-				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
-				break;
-			case 23:
-				RunBlock();
-				break;
-			case 24:
-				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
-				break;
-			case 25:
-				RunBlock();
-				break;
-			case 26:
 				String data2 = TimeStamp.Now() + ",";
 				data2 = data2 + SessionInfo.prolificExperimentCode + ",";
 				data2 = data2 + Counterbalance.getFactorLevel("whichRewardFirst") + ",";
@@ -254,7 +231,7 @@ public class SequenceHandler {
 				PHP.UpdateStatus("finished");
 				PHP.logData("finish", data2, true);
 				break;
-			case 27:
+			case 19:
 				// the end
 				ProgressBar.Hide();
 				ClickPage.Run(Instructions.Get(120), "nobutton"); // TODO: change this instruction

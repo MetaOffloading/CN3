@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sam.webtasks.basictools.Counterbalance;
 import com.sam.webtasks.basictools.PHP;
 import com.sam.webtasks.basictools.Points;
+import com.sam.webtasks.basictools.ProgressBar;
 import com.sam.webtasks.basictools.TimeStamp;
 import com.sam.webtasks.client.ExtraNames;
 
@@ -194,6 +195,10 @@ public class TimeDisplay {
 			//PHP.logData("TB_clockTick", data, false);
 			
 			clockDisplay.setHTML(timeString(TimeBlock.currentTime));
+			
+			if (TimeBlock.clockProgress) {
+				ProgressBar.Increment();
+			}
 			
 			//start reminding for target?
 			if (TimeBlock.lastTarget - TimeBlock.currentTime == TimeBlock.PMwindow) {

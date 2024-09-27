@@ -19,6 +19,7 @@ public class TimeBlock {
 	public static boolean timerButtonVisible;
 	public static boolean reminderButtonVisible;
 	public static boolean showPoints;
+	public static boolean clockProgress; //increment the progress bar with the clock
 	
 	//task type
 	public static boolean optionalPM;
@@ -133,6 +134,7 @@ public class TimeBlock {
 		optionalPM=false;
 		clockVisible=true;
 		showPoints=false;
+		clockProgress=false;
 		PMreward=SequenceHandler.reward;
 		PMinstructionCost=2;
 		timerButtonVisible=true;
@@ -170,6 +172,8 @@ public class TimeBlock {
 		spacebarPressed=false;
 		instructionOn=false;
 		instructionShown=false;
+		
+		PMinterval_list.clear();
 		
 		if (TimeDisplay.isInitialised == false) {
 			TimeDisplay.Init();

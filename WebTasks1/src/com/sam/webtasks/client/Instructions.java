@@ -22,54 +22,57 @@ public class Instructions {
 			i = "At the same time as doing this test, you will also do a 'timer task'. A digital clock "
 					+ "will be displayed above the letters. You will be asked to press "
 					+ "one of the keys on your keyboard at a particular time.<br><br>For example you might get "
-					+ "the instruction \"Hit the T key at 0:20\". When you see a message "
+					+ "the instruction \"Hit the T key at 0:10\". When you see a message "
 					+ "like this, first you should immediately press the spacebar to continue "
 					+ "with the letter task. You should keep going with the letter task like before. Then, "
-					+ "when the clock gets to the specified time (such as 0:20) you should press the "
+					+ "when the clock gets to the specified time (such as 0:10) you should press the "
 					+ "instructed button (in this case, T). Keep going with the letter task after this.<br><br>"
 					+ "The most important thing is to continue the letter task as quickly and as accurately "
 					+ "as possible. It is more important that you pay attention to the letters than the clock. "
 					+ "But you should also try to do the timer task at the same time, if you can.<br><br>"
 					+ "If you press the special key within 2 seconds of the instructed time (for example "
-					+ "0:18 to 0:22) this will be counted as correct.";
+					+ "0:08 to 0:12) this will be counted as correct.";
 			break;	
 		case 30:
 			i = "Each time you are asked to press "
 					+ "a special key, you can only do this <b>once</b>. For example, if you are told to press the F key at "
-					+ "0:20 and you already press it at 0:15, it will not count if you press it again. So you should only "
+					+ "0:10 and you already press it at 0:05, it will not count if you press it again. So you should only "
 					+ "press the special key when it is time to do so.<br><br> In this experiment, sometimes you will be "
-					+ "asked to press the special key after 10 seconds and sometimes you will be asked to press it "
-					+ "after 30 seconds.<br><br>When you remember to press the special key, you will "
+					+ "asked to press the special key after 5 seconds and sometimes you will be asked to press it "
+					+ "after 25 seconds.<br><br>When you remember to press the special key, you will "
 					+ "earn an extra bonus payment that will be sent to you after the experiment via Prolific.<br><br>"
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 31:
 			i = "Now that you have had some practice, we would like you to tell us how accurately you "
 					+ "think you can perform the timer task. We will ask you to make seperate predictions for "
-					+ "how well you can perform the task when you have to wait A) 10 seconds and "
-					+ "B) 30 seconds until it is time to press the special key.<br><br> "
+					+ "how well you can perform the task when you have to wait A) 5 seconds and "
+					+ "B) 25 seconds until it is time to press the special key.<br><br> "
 					+ "First of all, please use the scale below to indicate what percentage "
-					+ "of times you will remember to correctly press the special key when there is a <b>10 second wait</b>."
+					+ "of times you will remember to correctly press the special key when there is a <b>5 second wait</b>."
 					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
 					+ "that you can never get any of them correct.";
 			break;
 		case 32:
 			i = "Now, please use the scale below to indicate what percentage "
-					+ "of times you will remember to correctly press the special key when there is a <b>30 second wait</b>."
+					+ "of times you will remember to correctly press the special key when there is a <b>25 second wait</b>."
 					+ "<br><br>100% would mean that you will always get every single one correct. 0% would mean "
 					+ "that you can never get any of them correct.";
 			break;
 		case 40:
 			i = "From now on, you can decide whether to take the timer task when it is presented. "
 					+ "As before, you will earn extra points and money if you remember to press the special key. "
-					+ "For example, you may be told <br><br> \"You can earn " + SequenceHandler.reward + " points at 0:20 <br><br> For Instructions "
-					+ "press Enter <br><br> (Cost: " + SequenceHandler.PMinstructionCost + " points) <br><br> Or Space to continue\" <br><br>"
+					+ "For example, you may be told <br><br> \"You can earn " + SequenceHandler.reward + " points at 0:30 <br><br> For Instructions "
+					+ "press Enter <br><br> (Cost: 3 points) <br><br> Or Space to continue\" <br><br>"
 					+ "To take the timer task, you should press Enter to reveal the instructed time and special key. "
-					+ "This will come with a small cost of " + SequenceHandler.PMinstructionCost + " points but you will then earn "
-					+ SequenceHandler.reward + " points if you remember the special key. "
+					+ "This will cost you some points but you will earn "
+					+ SequenceHandler.reward + " points if you remember to press the special key. "
+					+ "In the above example, if you choose to reveal further instructions "
+					+ "<b>and</b> you remember to press the special key at 0:30, "
+					+ "you will earn 7 bonus points for completing the timer task. "
 					+ "<br><br>You will receive £1 for every 100 points you score, which means that you can earn an additional "
 					+ "bonus payment of over " + SequenceHandler.maxBonus + ", on top of the base payment from Prolific."
-					+ "<br><br>Alternatively, you can opt out of the timer task. This will avoid the small cost but you will not "
+					+ "<br><br>Alternatively, you can opt out of the timer task. This will avoid the cost but you will not "
 					+ "score any bonus points when you do this. To opt out of the timer task, just press the spacebar to continue with the "
 					+ "letter task. <br><br> "
 					+ "It is completely up to you whether you choose to take the timer task. If you like, you can take the timer task some "
@@ -77,9 +80,10 @@ public class Instructions {
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 41:
-			i = "Sometimes in this experiment you can earn " + SequenceHandler.reward + " points when you remember to press the special key. At other times you can "
-					+ "earn " + SequenceHandler.reward + " points. You will always be told the number of bonus points "
-					+ "before deciding whether to do the timer task. Please pay attention to the instructions before you begin each block."
+			i = "Each time the opportunity to take the timer task arises, there may be a different cost to revealing the instructed time and special key. This means that "
+					+ "sometimes in this experiment you may earn more points when you remember to press the special key, and other times you may "
+					+ "earn fewer points. You will always be told the cost of revealing the instructed time and special key "
+					+ "before deciding whether to do the timer task. Please pay attention to the instructions before you make your decision."
 					+ "<br><br>If you choose to do the timer task, don't forget to do the letter task as well. "
 					+ "You need to score at least 70% accuracy in the letter task, otherwise you will not receive any bonus "
 					+ "payments from the timer task.<br><br>The experiment will now begin. Please click below to proceed";

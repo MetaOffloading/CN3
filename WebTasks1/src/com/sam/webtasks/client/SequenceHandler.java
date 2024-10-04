@@ -128,12 +128,12 @@ public class SequenceHandler {
 				break;
 			case 4:
 				TimeBlock.Init();
-				TimeBlock.blockDuration=25;
+				TimeBlock.blockDuration=15;
 				TimeBlock.defaultPMintervals=false;
 				TimeBlock.timerButtonVisible=false;
 				TimeBlock.reminderButtonVisible=false;
 				TimeBlock.defaultPMintervals=false;
-				TimeBlock.PMinterval_list.add(10);
+				TimeBlock.PMinterval_list.add(5);
 				TimeBlock.multiPM=true;
 				TimeBlock.blockNumber=-2;
 				TimeBlock.Run();
@@ -158,14 +158,14 @@ public class SequenceHandler {
 				Points.Init();
 				
 				TimeBlock.Init();
-				TimeBlock.blockDuration = 65;
+				TimeBlock.blockDuration = 45;
 				TimeBlock.showPoints = true;
 				TimeBlock.timerButtonVisible = false;
 				TimeBlock.reminderButtonVisible = false;
 				TimeBlock.defaultPMintervals=false;
 				TimeBlock.multiPM=true;
-				TimeBlock.PMinterval_list.add(10);
-				TimeBlock.PMinterval_list.add(30);
+				TimeBlock.PMinterval_list.add(shortInterval);
+				TimeBlock.PMinterval_list.add(longInterval);
 				TimeBlock.shufflePMintervals=false;
 				TimeBlock.blockNumber=-3;
 				TimeBlock.Run();
@@ -205,21 +205,15 @@ public class SequenceHandler {
 				ClickPage.Run(Instructions.Get(41), "Next");
 				break;
 			case 14:
-				ClickPage.Run(Instructions.Get(50), "Next");
-				break;
-			case 15:
 				ProgressBar.Initialise();
 				ProgressBar.Show();
 				ProgressBar.SetProgress(0,890);
 				RunBlock();
 				break;
-			case 16:
-				ClickPage.Run(Instructions.Get(50), "Next"); // TODO: change this instruction
-				break;
-			case 17:
+			case 15:
 				RunBlock();
 				break;
-			case 18:
+			case 16:
 				String data2 = TimeStamp.Now() + ",";
 				data2 = data2 + SessionInfo.prolificExperimentCode + ",";
 				data2 = data2 + Counterbalance.getFactorLevel("whichRewardFirst") + ",";
@@ -231,7 +225,7 @@ public class SequenceHandler {
 				PHP.UpdateStatus("finished");
 				PHP.logData("finish", data2, true);
 				break;
-			case 19:
+			case 17:
 				// the end
 				ProgressBar.Hide();
 				ClickPage.Run(Instructions.Get(120), "nobutton"); // TODO: change this instruction

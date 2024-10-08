@@ -64,7 +64,7 @@ public class SequenceHandler {
 	public final static int gapInterval=5;
 	public final static int nIntentions=11; //number of intentions per block, per interval
 	
-	public final static String maxBonus = "£2.30";
+	public final static String maxBonus = "£2.75";
 	public static int block_id=0;
 	
 	public static void RunBlock() {
@@ -187,12 +187,14 @@ public class SequenceHandler {
 				break;
 			case 12:
 				TimeBlock.Init();
-				TimeBlock.blockDuration = 65;
+				TimeBlock.blockDuration = 85;
 				TimeBlock.showPoints = true;
 				TimeBlock.timerButtonVisible = false;
 				TimeBlock.reminderButtonVisible = false;
 				TimeBlock.defaultPMintervals=false;
 				TimeBlock.multiPM=true;
+				TimeBlock.PMinterval_list.add(shortInterval);
+				TimeBlock.PMinterval_list.add(longInterval);
 				TimeBlock.PMinterval_list.add(shortInterval);
 				TimeBlock.PMinterval_list.add(longInterval);
 				TimeBlock.shufflePMintervals=false;
@@ -211,9 +213,12 @@ public class SequenceHandler {
 				RunBlock();
 				break;
 			case 15:
-				RunBlock();
+				ClickPage.Run("Take a break.<br><br>When you are ready to continue, click below.", "Next");
 				break;
 			case 16:
+				RunBlock();
+				break;
+			case 17:
 				String data2 = TimeStamp.Now() + ",";
 				data2 = data2 + SessionInfo.prolificExperimentCode + ",";
 				data2 = data2 + Counterbalance.getFactorLevel("whichRewardFirst") + ",";
@@ -225,7 +230,7 @@ public class SequenceHandler {
 				PHP.UpdateStatus("finished");
 				PHP.logData("finish", data2, true);
 				break;
-			case 17:
+			case 18:
 				// the end
 				ProgressBar.Hide();
 				ClickPage.Run(Instructions.Get(120), "nobutton"); // TODO: change this instruction

@@ -64,12 +64,12 @@ public class Instructions {
 					+ "As before, you will earn extra points and money if you remember to press the special key. "
 					+ "For example, you may be told <br><br> \"You can earn " + SequenceHandler.reward + " points at 0:30 <br><br> For Instructions "
 					+ "press Enter <br><br> (Cost: 3 points) <br><br> Or Space to continue\" <br><br>"
-					+ "To take the timer task, you should press Enter to reveal the instructed time and special key. "
+					+ "To take the timer task, you should press Enter to reveal the special key. "
 					+ "This will cost you some points but you will earn "
 					+ SequenceHandler.reward + " points if you remember to press the special key. "
-					+ "In the above example, if you choose to reveal further instructions "
-					+ "<b>and</b> you remember to press the special key at 0:30, "
-					+ "you will earn 7 bonus points for completing the timer task. "
+					+ "In the above example, if you choose to reveal further instructions there would be an initial cost of 3 points, "
+					+ "but you would earn 10 points if you remember to press the special key at 0:30, "
+					+ "so in total you would gain 7 points for completing the timer task. "
 					+ "<br><br>You will receive £1 for every 100 points you score, which means that you can earn an additional "
 					+ "bonus payment of over " + SequenceHandler.maxBonus + ", on top of the base payment from Prolific."
 					+ "<br><br>Alternatively, you can opt out of the timer task. This will avoid the cost but you will not "
@@ -80,18 +80,16 @@ public class Instructions {
 					+ "<br><br>Please click below to practise again";
 			break;
 		case 41:
-			i = "Each time the opportunity to take the timer task arises, there may be a different cost to revealing the instructed time and special key. This means that "
-					+ "sometimes in this experiment you may earn more points when you remember to press the special key, and other times you may "
-					+ "earn fewer points. You will always be told the cost of revealing the instructed time and special key "
-					+ "before deciding whether to do the timer task. Please pay attention to the instructions before you make your decision."
+			i = "Each time the opportunity to take the timer task arises, there may be a different cost to revealing the special key. This means that "
+					+ "sometimes the total reward for remembering to press the special key will be higher and sometimes it will be lower. "
+					+ "The cost will vary from 0 points (i.e. no cost at all for revealing the special key) to 10 points (i.e. the cost for revealing "
+					+ "the special key is as high as the eventual reward you would get from remembering to press it).<br><br>"
+					+ "You will always be told the cost of revealing the special key "
+					+ "before deciding whether to do the timer task, and you will always earn 10 points if you then remember to press the special key. "
+					+ "Please pay attention to the instructions before you make your decision."
 					+ "<br><br>If you choose to do the timer task, don't forget to do the letter task as well. "
 					+ "You need to score at least 70% accuracy in the letter task, otherwise you will not receive any bonus "
 					+ "payments from the timer task.<br><br>The experiment will now begin. Please click below to proceed";
-			break;
-		case 50:			
-			i = "In this block, you can earn " 
-					+ SequenceHandler.reward 
-					+ " points for successfully completing the optional timer task.";
 			break;
 		case 120:
 			i = "You have now completed the experiment. Thank you for taking part.<br><br>"

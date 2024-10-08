@@ -10,6 +10,7 @@ import com.sam.webtasks.basictools.PHP;
 import com.sam.webtasks.basictools.Points;
 import com.sam.webtasks.basictools.TimeStamp;
 import com.sam.webtasks.client.SequenceHandler;
+import com.sam.webtasks.client.SessionInfo;
 
 public class TimeResponse {
 	public static Date stimOn;
@@ -21,8 +22,8 @@ public class TimeResponse {
 		//we specify blockDuration in seconds if it is positive, or trials if it is negative
 		boolean blockOver = false;
 		
-		
-		if (response==KeyCodes.KEY_Q) {
+		//quit the block if the Q key was pressed. We only do this in local testing mode	
+		if ((response==KeyCodes.KEY_Q)&&(SessionInfo.localTesting)) {
 			TimeBlock.PMhits=1;
 			TimeBlock.nBackMatchCorr=1;
 			TimeBlock.nBackNonMatchCorr=1;
@@ -107,7 +108,7 @@ public class TimeResponse {
 				}
 				
 				data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + ",";
-				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "1," + TimeStamp.Now();
+				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "1," + TimeBlock.lastCost + "," + TimeStamp.Now();
 				
 				PHP.logData("TB_instruction_response", data, false);
 				
@@ -119,7 +120,7 @@ public class TimeResponse {
 				TimeBlock.instructionShown = false;
 				
 				data = TimeBlock.blockNumber + "," + TimeBlock.currentTime + ",";
-				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "0," + TimeStamp.Now();
+				data = data + TimeBlock.nextInstruction + "," + TimeBlock.lastTarget + "," + "0," + TimeBlock.lastCost + "," + TimeStamp.Now();
 				
 				PHP.logData("TB_instruction_response", data, false);
 				

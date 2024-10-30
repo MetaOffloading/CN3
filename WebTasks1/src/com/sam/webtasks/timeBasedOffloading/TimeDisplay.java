@@ -258,9 +258,17 @@ public class TimeDisplay {
 					if (TimeBlock.optionalPM==false) {
 						instructionString = "Hit the " + (char)(kChar+'A') + " key at " + timeString(TimeBlock.nextTarget);	
 					} else {
+						String pointString;
+						
+						if (TimeBlock.PMinstructionCost==1) {
+							pointString = " point)<br>";
+						} else {
+							pointString = " points)<br>";
+						}
+						
 						instructionString = "You can earn " + TimeBlock.PMreward + " points at " + timeString(TimeBlock.nextTarget)
 								+ "<br>For instructions press Enter<br>"
-								+ "(Cost: " + TimeBlock.PMinstructionCost + " points)<br>"
+								+ "(Cost: " + TimeBlock.PMinstructionCost + pointString
 										+ "Or Space to continue";	
 					}	
 				}

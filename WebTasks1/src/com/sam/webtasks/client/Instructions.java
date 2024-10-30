@@ -105,7 +105,7 @@ public class Instructions {
 	public static String InfoText() {
 		String expDur = "40";
 		String eligibility = "All registered users of Prolific ";
-		String nVolunteers = "50";
+		String nVolunteers = "40";
 		
 		return ("We would like to invite you to participate in this research project. "
 				+ "You should only participate if you want to; choosing not to take part "
